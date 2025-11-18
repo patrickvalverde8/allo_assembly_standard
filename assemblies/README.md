@@ -1,120 +1,117 @@
 # 装配文件说明
 
+本目录包含各种设计示例，展示不同的设计风格和技术。
+
 ## 装配列表
 
-### 01_nodes_test.json
-**节点测试装配**
+### 01_simple_lamp.json
+**简单台灯**
 
-所有节点横排显示，用于验证：
-- 节点 STEP 文件是否正确加载
-- 节点原点位置是否正确
-- 节点轴向是否正确
+基础的四柱框架结构，适合初学者。
 
-构建：
-```bash
-python build.py assemblies/01_nodes_test.json
-```
+**特点**：
+- 4个底座支撑（SK8）
+- 4根竖直光轴
+- 简单的顶部连接
+- 尺寸：200×200×300mm
 
 ### 02_box_lamp.json
 **机箱风格灯具**
 
-一个 200×200×300mm 的立方体框架结构：
+完整的立方体框架结构。
 
-**结构**：
-- 4 个底座支撑（SK8）- 四个角
-- 4 根竖直光轴（300mm）
-- 4 个固定环（SC6）- 中间位置
-- 4 个顶部十字连接件 - 四个角
-- 4 根顶部横向光轴 - 形成顶部框架
-- 底板（240×240×5mm）
-- 顶板（240×240×3mm）
-
-构建：
-```bash
-python build.py assemblies/02_box_lamp.json
-```
+**特点**：
+- 8个角节点（底部SK8 + 顶部cross）
+- 12条光轴（4竖直 + 8横向）
+- 顶板和底板
+- 尺寸：200×200×300mm
 
 ### 03_complex_lamp.json
 **复杂错位灯具**
 
-一个 150×150×280mm 的错位结构，展示光轴错位美学：
+展示光轴错位美学的复杂结构。
 
 **特点**：
-- 光轴错位布局（不对称）
-- 多节点设计（21个节点）
-- 4 块小玻璃面板（90×90×3mm）
-- SC6 夹持玻璃（间距 11mm）
-- 尺寸 < 500mm
+- 21个节点
+- 光轴错位布局
+- 4块玻璃面板（90×90mm）
+- SC6夹持玻璃
+- 尺寸：150×150×280mm
 
-**结构**：
-- 底层：4 个 SK8 支撑座
-- 中层：4 个节点（十字+T型）+ 1 个中心十字
-- 顶层：4 个 T 型节点（错位布局）
-- 8 个 SC6 固定环（4 对，夹持玻璃）
-- 4 块玻璃面板（四个方向）
+### 04_compact_lamp.json
+**紧凑型台灯**
 
-构建：
-```bash
-python build.py assemblies/03_complex_lamp.json
-```
+小巧精致的台灯设计。
+
+**特点**：
+- 双竖直支撑
+- 横向连接
+- 玻璃面板装饰
+- 尺寸：约100×60×150mm
+
+### 05_creative_lamp.json
+**创意不对称台灯**
+
+展示不对称设计和旋转节点的使用。
+
+**特点**：
+- 左右不对称结构
+- T型节点旋转使用
+- 玻璃夹持组合
+- 尺寸：60×60×130mm
+
+### 06_deconstructed_car.json
+**解构主义小汽车**
+
+展示解构主义设计理念。
+
+**特点**：
+- 车身框架结构
+- 4个车轮面板
+- 车顶支撑
+- 独立结束的光轴
+- 尺寸：100×60×60mm
 
 ## 创建新装配
 
 1. 在此目录创建 JSON 文件
-2. 定义节点、光轴、面板
-3. 运行 `python build.py assemblies/your_file.json`
+2. 参考 `docs/02_构建JSON规则.md` 了解设计流程
+3. 定义节点、光轴、面板
+4. 运行 `python build.py assemblies/your_file.json`
 
-## JSON 格式
+## JSON 基本结构
 
 ```json
 {
   "name": "装配名称",
   "unit_mm": 1.0,
-  "nodes": [
-    {
-      "id": "节点ID",
-      "component_id": "节点类型",
-      "position": [x, y, z],
-      "rotation_deg": [rz, ry, rx]
-    }
-  ],
-  "rods": [
-    {
-      "id": "光轴ID",
-      "component_id": "rod_3mm",
-      "from": {"node": "起点节点", "port": "端口", "side": "positive/negative"},
-      "to": {"node": "终点节点", "port": "端口", "side": "positive/negative"}
-    }
-  ],
-  "panels": [
-    {
-      "id": "面板ID",
-      "component_id": "panel_rect",
-      "position": [x, y, z],
-      "normal": [nx, ny, nz],
-      "x_dir": [xx, xy, xz],
-      "size_mm": [width, height],
-      "thickness_mm": thickness
-    }
-  ],
-  "rod_attachments": [
-    {
-      "node": "节点ID",
-      "port": "端口",
-      "rod": "光轴ID",
-      "offset_mm": 距离
-    }
-  ]
+  "nodes": [...],
+  "rods": [...],
+  "panels": [...],
+  "rod_attachments": [...]
 }
 ```
 
-## 可用节点
+详细格式说明请参考文档目录。
 
-- `node_cross_6x6` - 十字连接件（6个端口）
-- `node_T_6x6` - T型连接件（3个端口）
-- `node_parallel_6x6_c10` - 平行连接件（2个端口）
-- `node_SC6_ring` - 固定环（1个端口）
-- `node_SK6_support` - SK6支撑座（1个端口）
-- `node_SK8_support` - SK8支撑座（1个端口）
+## 可用节点类型
 
-详见 `nodes/components.json`
+| 节点类型 | 说明 | 端口数 |
+|---------|------|--------|
+| `node_SK8_support` | 底座支撑 | 1 |
+| `node_T_6x6` | T型连接件 | 2 |
+| `node_cross_6x6` | 十字连接件 | 2 |
+| `node_parallel_6x6_c10` | 平行连接件 | 2 |
+| `node_SC6_ring` | 固定环 | 1 |
+
+详见 `nodes/components.json` 和 `docs/03_节点端口说明.md`
+
+## 设计建议
+
+- 整体尺寸建议 300mm 左右
+- 节点间距建议 >= 30mm
+- 光轴可以独立结束（悬臂结构）
+- 面板 position 定义在底面中心
+- SC6 环间距 11mm（用于夹持 3mm 玻璃）
+
+更多设计指南请参考 `docs/` 目录。
