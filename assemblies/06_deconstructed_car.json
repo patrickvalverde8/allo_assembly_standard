@@ -1,0 +1,202 @@
+{
+  "_design_thinking": {
+    "intent": "设计一个简单的解构主义小汽车，用光轴骨架和面板表现汽车的基本形态",
+    "shape_planning": {
+      "chassis": "底盘：四个支撑点",
+      "body": "车身：简单框架",
+      "wheels": "四个车轮面板"
+    },
+    "support_structure": {
+      "底盘": "四角SK8支撑",
+      "车身": "四根竖直光轴 + 横向连接",
+      "简化": "不使用复杂节点，保持简单"
+    }
+  },
+  "name": "解构主义小汽车",
+  "unit_mm": 1.0,
+  "nodes": [
+    {
+      "id": "chassis_fl",
+      "component_id": "node_SK8_support",
+      "position": [0, 0, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "chassis_fr",
+      "component_id": "node_SK8_support",
+      "position": [100, 0, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "chassis_bl",
+      "component_id": "node_SK8_support",
+      "position": [0, 60, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "chassis_br",
+      "component_id": "node_SK8_support",
+      "position": [100, 60, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "body_fl",
+      "component_id": "node_T_6x6",
+      "position": [0, 0, 40],
+      "rotation_deg": [0, 0, 90]
+    },
+    {
+      "id": "body_fr",
+      "component_id": "node_T_6x6",
+      "position": [100, 0, 40],
+      "rotation_deg": [0, 0, -90]
+    },
+    {
+      "id": "body_bl",
+      "component_id": "node_T_6x6",
+      "position": [0, 60, 40],
+      "rotation_deg": [0, 0, 90]
+    },
+    {
+      "id": "body_br",
+      "component_id": "node_T_6x6",
+      "position": [100, 60, 40],
+      "rotation_deg": [0, 0, -90]
+    },
+    {
+      "id": "roof_fl",
+      "component_id": "node_SK8_support",
+      "position": [0, 0, 60],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "roof_fr",
+      "component_id": "node_SK8_support",
+      "position": [100, 0, 60],
+      "rotation_deg": [0, 0, 0]
+    }
+  ],
+  "rods": [
+    {
+      "id": "pillar_fl",
+      "component_id": "rod_3mm",
+      "from": {"node": "chassis_fl", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "body_fl", "port": "main_y_neg", "side": "negative"}
+    },
+    {
+      "id": "pillar_fr",
+      "component_id": "rod_3mm",
+      "from": {"node": "chassis_fr", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "body_fr", "port": "main_y_neg", "side": "negative"}
+    },
+    {
+      "id": "pillar_bl",
+      "component_id": "rod_3mm",
+      "from": {"node": "chassis_bl", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "body_bl", "port": "main_y_neg", "side": "negative"}
+    },
+    {
+      "id": "pillar_br",
+      "component_id": "rod_3mm",
+      "from": {"node": "chassis_br", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "body_br", "port": "main_y_neg", "side": "negative"}
+    },
+    {
+      "id": "body_front",
+      "component_id": "rod_3mm",
+      "from": {"node": "body_fl", "port": "sub_x_neg", "side": "negative"},
+      "to": {"node": "body_fr", "port": "sub_x_neg", "side": "negative"}
+    },
+    {
+      "id": "body_back",
+      "component_id": "rod_3mm",
+      "from": {"node": "body_bl", "port": "sub_x_neg", "side": "negative"},
+      "to": {"node": "body_br", "port": "sub_x_neg", "side": "negative"}
+    },
+    {
+      "id": "roof_pillar_fl",
+      "component_id": "rod_3mm",
+      "from": {"node": "body_fl", "port": "main_y_pos", "side": "positive"},
+      "to": {"node": "roof_fl", "port": "rod_axis", "side": "positive"}
+    },
+    {
+      "id": "roof_pillar_fr",
+      "component_id": "rod_3mm",
+      "from": {"node": "body_fr", "port": "main_y_pos", "side": "positive"},
+      "to": {"node": "roof_fr", "port": "rod_axis", "side": "positive"}
+    }
+  ],
+  "rod_attachments": [],
+  "panels": [
+    {
+      "id": "wheel_fl",
+      "component_id": "panel_rect",
+      "position": [0, 0, 0],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [20, 20],
+      "thickness_mm": 5,
+      "_comment": "左前轮"
+    },
+    {
+      "id": "wheel_fr",
+      "component_id": "panel_rect",
+      "position": [100, 0, 0],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [20, 20],
+      "thickness_mm": 5,
+      "_comment": "右前轮"
+    },
+    {
+      "id": "wheel_bl",
+      "component_id": "panel_rect",
+      "position": [0, 60, 0],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [20, 20],
+      "thickness_mm": 5,
+      "_comment": "左后轮"
+    },
+    {
+      "id": "wheel_br",
+      "component_id": "panel_rect",
+      "position": [100, 60, 0],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [20, 20],
+      "thickness_mm": 5,
+      "_comment": "右后轮"
+    },
+    {
+      "id": "body_side_left",
+      "component_id": "panel_rect",
+      "position": [50, 0, 20],
+      "normal": [0, -1, 0],
+      "x_dir": [1, 0, 0],
+      "size_mm": [80, 20],
+      "thickness_mm": 3,
+      "_comment": "车身左侧"
+    },
+    {
+      "id": "body_side_right",
+      "component_id": "panel_rect",
+      "position": [50, 60, 20],
+      "normal": [0, 1, 0],
+      "x_dir": [1, 0, 0],
+      "size_mm": [80, 20],
+      "thickness_mm": 3,
+      "_comment": "车身右侧"
+    },
+    {
+      "id": "roof_panel",
+      "component_id": "panel_rect",
+      "position": [50, 40, 60],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [60, 40],
+      "thickness_mm": 3,
+      "_comment": "车顶"
+    }
+  ]
+}

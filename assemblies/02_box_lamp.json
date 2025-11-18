@@ -1,0 +1,174 @@
+{
+  "name": "机箱风格灯具",
+  "unit_mm": 1.0,
+  "nodes": [
+    {
+      "id": "base_fl",
+      "component_id": "node_SK8_support",
+      "position": [0, 0, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "base_fr",
+      "component_id": "node_SK8_support",
+      "position": [200, 0, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "base_bl",
+      "component_id": "node_SK8_support",
+      "position": [0, 200, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "base_br",
+      "component_id": "node_SK8_support",
+      "position": [200, 200, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "top_fl",
+      "component_id": "node_cross_6x6",
+      "position": [0, 0, 300],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "top_fr",
+      "component_id": "node_cross_6x6",
+      "position": [200, 0, 300],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "top_bl",
+      "component_id": "node_cross_6x6",
+      "position": [0, 200, 300],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "top_br",
+      "component_id": "node_cross_6x6",
+      "position": [200, 200, 300],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "ring_fl",
+      "component_id": "node_SC6_ring",
+      "position": [0, 0, 150],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "ring_fr",
+      "component_id": "node_SC6_ring",
+      "position": [200, 0, 150],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "ring_bl",
+      "component_id": "node_SC6_ring",
+      "position": [0, 200, 150],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "ring_br",
+      "component_id": "node_SC6_ring",
+      "position": [200, 200, 150],
+      "rotation_deg": [0, 0, 0]
+    }
+  ],
+  "rods": [
+    {
+      "id": "rod_fl",
+      "component_id": "rod_3mm",
+      "from": {"node": "base_fl", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "top_fl", "port": "z_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_fr",
+      "component_id": "rod_3mm",
+      "from": {"node": "base_fr", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "top_fr", "port": "z_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_bl",
+      "component_id": "rod_3mm",
+      "from": {"node": "base_bl", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "top_bl", "port": "z_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_br",
+      "component_id": "rod_3mm",
+      "from": {"node": "base_br", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "top_br", "port": "z_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_top_front",
+      "component_id": "rod_3mm",
+      "from": {"node": "top_fl", "port": "x_pos", "side": "positive"},
+      "to": {"node": "top_fr", "port": "x_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_top_back",
+      "component_id": "rod_3mm",
+      "from": {"node": "top_bl", "port": "x_pos", "side": "positive"},
+      "to": {"node": "top_br", "port": "x_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_top_left",
+      "component_id": "rod_3mm",
+      "from": {"node": "top_fl", "port": "y_pos", "side": "positive"},
+      "to": {"node": "top_bl", "port": "y_neg", "side": "negative"}
+    },
+    {
+      "id": "rod_top_right",
+      "component_id": "rod_3mm",
+      "from": {"node": "top_fr", "port": "y_pos", "side": "positive"},
+      "to": {"node": "top_br", "port": "y_neg", "side": "negative"}
+    }
+  ],
+  "panels": [
+    {
+      "id": "base_panel",
+      "component_id": "panel_rect",
+      "position": [100, 100, -5],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [240, 240],
+      "thickness_mm": 5
+    },
+    {
+      "id": "top_panel",
+      "component_id": "panel_rect",
+      "position": [100, 100, 305],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [240, 240],
+      "thickness_mm": 3
+    }
+  ],
+  "rod_attachments": [
+    {
+      "node": "ring_fl",
+      "port": "rod_axis",
+      "rod": "rod_fl",
+      "offset_mm": 150.0
+    },
+    {
+      "node": "ring_fr",
+      "port": "rod_axis",
+      "rod": "rod_fr",
+      "offset_mm": 150.0
+    },
+    {
+      "node": "ring_bl",
+      "port": "rod_axis",
+      "rod": "rod_bl",
+      "offset_mm": 150.0
+    },
+    {
+      "node": "ring_br",
+      "port": "rod_axis",
+      "rod": "rod_br",
+      "offset_mm": 150.0
+    }
+  ]
+}

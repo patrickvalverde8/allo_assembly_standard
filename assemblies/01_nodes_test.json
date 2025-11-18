@@ -1,0 +1,93 @@
+{
+  "name": "节点测试",
+  "unit_mm": 1.0,
+  "nodes": [
+    {
+      "id": "N1",
+      "component_id": "node_cross_6x6",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "N2",
+      "component_id": "node_T_6x6",
+      "position": [
+        50,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "N3",
+      "component_id": "node_parallel_6x6_c10",
+      "position": [
+        100,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "N4",
+      "component_id": "node_SK6_support",
+      "position": [
+        150,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "N5",
+      "component_id": "node_SK8_support",
+      "position": [
+        200,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "N6",
+      "component_id": "node_SC6_ring",
+      "position": [
+        250,
+        0,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "rods": [],
+  "panels": [],
+  "rod_attachments": []
+}

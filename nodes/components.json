@@ -1,0 +1,279 @@
+{
+  "version": "1.0",
+  "unit_mm": 1.0,
+  "rod_standard": {
+    "radius_mm": 3.0
+  },
+  "components": [
+    {
+      "id": "rod_3mm",
+      "category": "rod",
+      "name": "标准光轴 3mm",
+      "radius_mm": 3.0,
+      "min_length_mm": 10.0,
+      "max_length_mm": 1000.0
+    },
+    {
+      "id": "node_cross_6x6",
+      "category": "node",
+      "name": "十字连接件 6×6",
+      "description": "两孔十字连接件。主孔在原点（Y方向贯穿，正负均可），副孔在(-10,0,0)（Z方向贯穿，正负均可）",
+      "params": {},
+      "local_frame": {
+        "origin": [0, 0, 0],
+        "origin_rule": "主孔（Y方向）的中心点",
+        "axes": {"x": [1, 0, 0], "y": [0, 1, 0], "z": [0, 0, 1]}
+      },
+      "ports": [
+        {
+          "id": "main_y_pos",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, 1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "主孔Y正向"
+        },
+        {
+          "id": "main_y_neg",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, -1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "主孔Y负向"
+        },
+        {
+          "id": "sub_z_pos",
+          "type": "rod_axis",
+          "position": [-10, 0, 0],
+          "axis": [0, 0, 1],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "副孔Z正向"
+        },
+        {
+          "id": "sub_z_neg",
+          "type": "rod_axis",
+          "position": [-10, 0, 0],
+          "axis": [0, 0, -1],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "副孔Z负向"
+        }
+      ]
+    },
+    {
+      "id": "node_T_6x6",
+      "category": "node",
+      "name": "T型连接件 6×6",
+      "description": "T型连接件。主孔在原点（Y方向贯穿，正负均可），副孔在(-10,0,0)（X负方向，仅负向可插入）",
+      "params": {},
+      "local_frame": {
+        "origin": [0, 0, 0],
+        "origin_rule": "主孔（Y方向）的中心点",
+        "axes": {"x": [1, 0, 0], "y": [0, 1, 0], "z": [0, 0, 1]}
+      },
+      "ports": [
+        {
+          "id": "main_y_pos",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, 1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "主孔Y正向"
+        },
+        {
+          "id": "main_y_neg",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, -1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "主孔Y负向"
+        },
+        {
+          "id": "sub_x_neg",
+          "type": "rod_axis",
+          "position": [-10, 0, 0],
+          "axis": [-1, 0, 0],
+          "compatible_rod": "rod_3mm",
+          "through": false,
+          "insert_from": ["negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "副孔X负向（仅负向）"
+        }
+      ]
+    },
+    {
+      "id": "node_parallel_6x6_c10",
+      "category": "node",
+      "name": "平行连接件 6×6 中心距10",
+      "description": "平行双孔连接件。主孔在原点（Y方向贯穿，正负均可），副孔在(-10,0,0)（Y方向贯穿，正负均可）",
+      "params": {},
+      "local_frame": {
+        "origin": [0, 0, 0],
+        "origin_rule": "主孔（Y方向）的中心点",
+        "axes": {"x": [1, 0, 0], "y": [0, 1, 0], "z": [0, 0, 1]}
+      },
+      "ports": [
+        {
+          "id": "main_y_pos",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, 1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "主孔Y正向"
+        },
+        {
+          "id": "main_y_neg",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, -1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "主孔Y负向"
+        },
+        {
+          "id": "sub_y_pos",
+          "type": "rod_axis",
+          "position": [-10, 0, 0],
+          "axis": [0, 1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "副孔Y正向"
+        },
+        {
+          "id": "sub_y_neg",
+          "type": "rod_axis",
+          "position": [-10, 0, 0],
+          "axis": [0, -1, 0],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 6.0,
+          "description": "副孔Y负向"
+        }
+      ]
+    },
+    {
+      "id": "node_SK6_support",
+      "category": "node",
+      "name": "T型立式支撑座 SK6",
+      "params": {},
+      "local_frame": {
+        "origin": [0, 0, 0],
+        "origin_rule": "光轴中心线与底座上表面交点",
+        "axes": {"x": [1, 0, 0], "y": [0, 1, 0], "z": [0, 0, 1]}
+      },
+      "ports": [
+        {
+          "id": "rod_axis",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, 0, 1],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 3.0
+        }
+      ]
+    },
+    {
+      "id": "node_SK8_support",
+      "category": "node",
+      "name": "光轴支撑座 SK8",
+      "params": {},
+      "local_frame": {
+        "origin": [0, 0, 0],
+        "origin_rule": "光轴中心线与底座上表面交点",
+        "axes": {"x": [1, 0, 0], "y": [0, 1, 0], "z": [0, 0, 1]}
+      },
+      "ports": [
+        {
+          "id": "rod_axis",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, 0, 1],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive"],
+          "max_rods": 1,
+          "occupied_length_mm": 3.0
+        }
+      ]
+    },
+    {
+      "id": "node_SC6_ring",
+      "category": "node",
+      "name": "固定环 SC6",
+      "description": "固定环，用于夹持玻璃面板。环厚度8mm，原点在环中心。面板应放在环的±4mm位置（贴合环表面）。光轴沿Z方向，正负均可插入",
+      "params": {
+        "ring_thickness_mm": 8.0,
+        "panel_offset_mm": 4.0
+      },
+      "local_frame": {
+        "origin": [0, 0, 0],
+        "origin_rule": "光轴中心线，环厚度中心平面",
+        "axes": {"x": [1, 0, 0], "y": [0, 1, 0], "z": [0, 0, 1]}
+      },
+      "ports": [
+        {
+          "id": "rod_axis",
+          "type": "rod_axis",
+          "position": [0, 0, 0],
+          "axis": [0, 0, 1],
+          "compatible_rod": "rod_3mm",
+          "through": true,
+          "insert_from": ["positive", "negative"],
+          "max_rods": 1,
+          "occupied_length_mm": 0.0,
+          "description": "光轴孔（Z方向，正负均可）"
+        }
+      ]
+    },
+    {
+      "id": "panel_rect",
+      "category": "panel",
+      "name": "矩形面板",
+      "shape": "rect",
+      "thickness_mm": 3.0,
+      "params": {
+        "default_width": 100,
+        "default_height": 100
+      }
+    }
+  ]
+}

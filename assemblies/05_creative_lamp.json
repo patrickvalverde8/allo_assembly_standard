@@ -1,0 +1,157 @@
+{
+  "_design_thinking": {
+    "intent": "创建一个创意台灯，采用不对称设计，左右两条竖直支撑链，中层横向连接，左侧用玻璃面板和装饰环点缀",
+    "structure": [
+      "左侧：竖直支撑链（base_L → mid_L → top_L）",
+      "右侧：竖直支撑链（base_R → mid_R → top_R）",
+      "横向：中层用T型节点实现横向桥接",
+      "装饰：左侧竖直光轴上用SC6夹持玻璃面板"
+    ],
+    "key_coordinates": {
+      "left_chain": "x=0, y=0, 底层z=0, 中层z=70, 顶层z=130",
+      "right_chain": "x=60, y=0, 底层z=0, 中层z=70, 顶层z=130",
+      "glass_center": "[0, 0, 100]"
+    },
+    "connections": {
+      "vertical": [
+        "base_L → mid_L (70mm, 沿Z轴)",
+        "mid_L → top_L (60mm, 沿Z轴)",
+        "base_R → mid_R (70mm, 沿Z轴)",
+        "mid_R → top_R (60mm, 沿Z轴)"
+      ],
+      "horizontal": [
+        "mid_L ←→ mid_R (60mm, 沿X轴，使用T型节点的副孔)"
+      ]
+    },
+    "special_elements": {
+      "glass_clamping": "在左侧竖直光轴rod_v1上，玻璃中心z=100，厚度3mm",
+      "ring_positions": "上环z=105.5, 下环z=94.5, 间距11mm"
+    }
+  },
+  "name": "创意不对称台灯",
+  "unit_mm": 1.0,
+  "nodes": [
+    {
+      "id": "base_L",
+      "component_id": "node_SK8_support",
+      "position": [0, 0, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "mid_L",
+      "component_id": "node_T_6x6",
+      "position": [0, 0, 70],
+      "rotation_deg": [0, 0, 90]
+    },
+    {
+      "id": "top_L",
+      "component_id": "node_SK8_support",
+      "position": [0, 0, 130],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "base_R",
+      "component_id": "node_SK8_support",
+      "position": [60, 0, 0],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "mid_R",
+      "component_id": "node_T_6x6",
+      "position": [60, 0, 70],
+      "rotation_deg": [0, 0, -90]
+    },
+    {
+      "id": "top_R",
+      "component_id": "node_SK8_support",
+      "position": [60, 0, 130],
+      "rotation_deg": [0, 0, 0]
+    },
+    {
+      "id": "ring_top",
+      "component_id": "node_SC6_ring",
+      "position": [0, 0, 105.5],
+      "rotation_deg": [0, 0, 0],
+      "_comment": "玻璃顶面101.5 + 4 = 105.5"
+    },
+    {
+      "id": "ring_bottom",
+      "component_id": "node_SC6_ring",
+      "position": [0, 0, 94.5],
+      "rotation_deg": [0, 0, 0],
+      "_comment": "玻璃底面98.5 - 4 = 94.5"
+    }
+  ],
+  "rods": [
+    {
+      "id": "rod_v1",
+      "component_id": "rod_3mm",
+      "from": {
+        "node": "base_L",
+        "port": "rod_axis",
+        "side": "positive"
+      },
+      "to": {
+        "node": "top_L",
+        "port": "rod_axis",
+        "side": "positive"
+      }
+    },
+    {
+      "id": "rod_v2",
+      "component_id": "rod_3mm",
+      "from": {
+        "node": "base_R",
+        "port": "rod_axis",
+        "side": "positive"
+      },
+      "to": {
+        "node": "top_R",
+        "port": "rod_axis",
+        "side": "positive"
+      }
+    },
+    {
+      "id": "rod_h1",
+      "component_id": "rod_3mm",
+      "from": {
+        "node": "mid_L",
+        "port": "sub_x_neg",
+        "side": "negative"
+      },
+      "to": {
+        "node": "mid_R",
+        "port": "sub_x_neg",
+        "side": "negative"
+      }
+    }
+  ],
+  "rod_attachments": [
+    {
+      "node": "ring_top",
+      "port": "rod_axis",
+      "rod": "rod_v1",
+      "offset_mm": 105.5,
+      "_comment": "从base_L(z=0)算起的距离"
+    },
+    {
+      "node": "ring_bottom",
+      "port": "rod_axis",
+      "rod": "rod_v1",
+      "offset_mm": 94.5,
+      "_comment": "从base_L(z=0)算起的距离"
+    }
+  ],
+  "panels": [
+    {
+      "id": "glass_panel",
+      "component_id": "panel_rect",
+      "position": [0, 0, 98.5],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [40, 40],
+      "thickness_mm": 3,
+      "_comment": "position在底面，顶面在z=101.5"
+    }
+  ]
+}

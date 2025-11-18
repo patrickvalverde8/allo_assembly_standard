@@ -1,0 +1,145 @@
+{
+  "name": "紧凑型精致灯具",
+  "description": "小型精致灯具，尺寸约80x40x150mm。简洁设计，中央玻璃面板由SC6固定环夹持",
+  "unit_mm": 1.0,
+  "nodes": [
+    {
+      "id": "base_1",
+      "component_id": "node_SK8_support",
+      "position": [0, 0, 0],
+      "rotation_deg": [0, 0, 0],
+      "comment": "左底座"
+    },
+    {
+      "id": "base_2",
+      "component_id": "node_SK8_support",
+      "position": [60, 0, 0],
+      "rotation_deg": [0, 0, 0],
+      "comment": "右底座"
+    },
+    {
+      "id": "mid_1",
+      "component_id": "node_T_6x6",
+      "position": [0, 20, 80],
+      "rotation_deg": [0, 0, 0],
+      "comment": "左中层T型（主孔Y向，副孔X负向）"
+    },
+    {
+      "id": "mid_2",
+      "component_id": "node_T_6x6",
+      "position": [60, 20, 80],
+      "rotation_deg": [0, 0, 0],
+      "comment": "右中层T型"
+    },
+    {
+      "id": "top_1",
+      "component_id": "node_T_6x6",
+      "position": [0, 20, 140],
+      "rotation_deg": [0, 0, 0],
+      "comment": "左顶部T型"
+    },
+    {
+      "id": "top_2",
+      "component_id": "node_T_6x6",
+      "position": [60, 20, 140],
+      "rotation_deg": [0, 0, 0],
+      "comment": "右顶部T型"
+    },
+    {
+      "id": "ring_glass_top",
+      "component_id": "node_SC6_ring",
+      "position": [30, 20, 110],
+      "rotation_deg": [0, 0, 0],
+      "comment": "玻璃上固定环"
+    },
+    {
+      "id": "ring_glass_bot",
+      "component_id": "node_SC6_ring",
+      "position": [30, 20, 99],
+      "rotation_deg": [0, 0, 0],
+      "comment": "玻璃下固定环，间距11mm"
+    }
+  ],
+  "rods": [
+    {
+      "id": "rod_v1",
+      "component_id": "rod_3mm",
+      "from": {"node": "base_1", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "mid_1", "port": "main_y_neg", "side": "negative"},
+      "comment": "左竖杆下段（到主孔）"
+    },
+    {
+      "id": "rod_v2",
+      "component_id": "rod_3mm",
+      "from": {"node": "base_2", "port": "rod_axis", "side": "positive"},
+      "to": {"node": "mid_2", "port": "main_y_neg", "side": "negative"},
+      "comment": "右竖杆下段"
+    },
+    {
+      "id": "rod_v3",
+      "component_id": "rod_3mm",
+      "from": {"node": "mid_1", "port": "main_y_pos", "side": "positive"},
+      "to": {"node": "top_1", "port": "main_y_neg", "side": "negative"},
+      "comment": "左竖杆上段"
+    },
+    {
+      "id": "rod_v4",
+      "component_id": "rod_3mm",
+      "from": {"node": "mid_2", "port": "main_y_pos", "side": "positive"},
+      "to": {"node": "top_2", "port": "main_y_neg", "side": "negative"},
+      "comment": "右竖杆上段"
+    },
+    {
+      "id": "rod_h1",
+      "component_id": "rod_3mm",
+      "from": {"node": "mid_1", "port": "sub_x_neg", "side": "negative"},
+      "to": {"node": "mid_2", "port": "sub_x_neg", "side": "negative"},
+      "comment": "中层横杆（副孔X负向）"
+    },
+    {
+      "id": "rod_h2",
+      "component_id": "rod_3mm",
+      "from": {"node": "top_1", "port": "sub_x_neg", "side": "negative"},
+      "to": {"node": "top_2", "port": "sub_x_neg", "side": "negative"},
+      "comment": "顶层横杆（副孔X负向）"
+    }
+  ],
+  "panels": [
+    {
+      "id": "glass_panel",
+      "component_id": "panel_rect",
+      "position": [30, 20, 104.5],
+      "normal": [0, 1, 0],
+      "x_dir": [1, 0, 0],
+      "size_mm": [50, 50],
+      "thickness_mm": 3,
+      "comment": "中央玻璃面板，环上Z=110(-4mm=106)，环下Z=99(+4mm=103)，面板中心Z=104.5"
+    },
+    {
+      "id": "base_panel",
+      "component_id": "panel_rect",
+      "position": [30, 20, -3],
+      "normal": [0, 0, 1],
+      "x_dir": [1, 0, 0],
+      "size_mm": [80, 60],
+      "thickness_mm": 5,
+      "comment": "底座面板"
+    }
+  ],
+  "rod_attachments": [
+    {
+      "node": "ring_glass_top",
+      "port": "rod_axis",
+      "rod": "rod_v3",
+      "offset_mm": 30.0,
+      "comment": "玻璃上固定环，挂在左上竖杆"
+    },
+    {
+      "node": "ring_glass_bot",
+      "port": "rod_axis",
+      "rod": "rod_v3",
+      "offset_mm": 19.0,
+      "comment": "玻璃下固定环，间距11mm"
+    }
+  ]
+}
